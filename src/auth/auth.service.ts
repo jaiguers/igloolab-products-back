@@ -9,9 +9,9 @@ export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService
-  ) {}
+  ) { }
 
-  async login(loginDto: LoginDto): Promise<{ accessToken: string }> {
+  async login(loginDto: LoginDto): Promise<{ token: string }> {
     const { email, password } = loginDto;
     const user = await this.usersService.findByEmail(email);
 
@@ -26,9 +26,8 @@ export class AuthService {
     }
 
     const payload = { sub: user.id, email: user.email };
-    const accessToken = await this.jwtService.signAsync(payload);
+    const token = await this.jwtService.signAsync(payload);
 
-    return { accessToken };
+    return { token };
   }
 }
-

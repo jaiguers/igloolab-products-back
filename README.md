@@ -18,6 +18,7 @@ Backend creado con NestJS y TypeScript para gestionar usuarios y productos conec
    SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
    JWT_SECRET=super-secret-jwt-key
    JWT_EXPIRES_IN=1h
+   CORS_ORIGINS=http://localhost:3000
    ```
 3. Define las tablas en Supabase/Postgres:
    - `users`: columnas recomendadas `id bigserial primary key`, `email varchar unique not null`, `password varchar not null` (guardar hash), `name varchar`, `lastname varchar`, `created_at timestamptz default now()`.
